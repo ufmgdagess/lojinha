@@ -1,5 +1,5 @@
 <head>
-    <base href="https://api.whatsapp.com/send?phone=55">
+    <base href="https://api.whatsapp.com/send?phone=553192990360">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja DAGESS</title>
@@ -648,6 +648,32 @@ function displayCart() {
     });
     cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
 }
+
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+function checkFields() {
+    const name = document.getElementById('user-name').value;
+    const email = document.getElementById('user-email').value;
+    const whatsapp = document.getElementById('user-whatsapp').value;
+    const generatePdfButton = document.querySelector('.generate-pdf');
+
+    const isEmailValid = validateEmail(email);
+
+    // Verifica se todos os campos estão preenchidos e se o e-mail é válido
+    if (name && email && whatsapp && isEmailValid) {
+        generatePdfButton.disabled = false;
+    } else {
+        generatePdfButton.disabled = true;
+    }
+}
+
+// Listener de eventos para validar conforme o usuário digita
+document.getElementById('user-name').addEventListener('input', checkFields);
+document.getElementById('user-email').addEventListener('input', checkFields);
+document.getElementById('user-whatsapp').addEventListener('input', checkFields);
 
 function generatePDF() {
     const { jsPDF } = window.jspdf;
