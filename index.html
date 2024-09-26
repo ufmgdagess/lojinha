@@ -21,11 +21,7 @@
     <meta name="twitter:description" content="Bem-vindo à lojinha do DAGESS!">
     <meta name="twitter:image" content="https://ufmgdagess.github.io/lojinha/logo.png">
 
-    <style>
-        /* Seu CSS existente */
-    </style>
-</head>
-    <style>
+<style>
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
@@ -71,14 +67,16 @@
             font-size: 2em;
         }
 
-.cart-area h2 {
-    text-align: center;
-    font-size: 1.2em; /* Ajuste o tamanho conforme necessário */
-    margin-bottom: 15px; /* Ajuste a margem inferior conforme necessário */
-}
-button {
-    border-radius: 8px; /* Ajuste o valor conforme necessário */
-}
+        .cart-area h2 {
+            text-align: center;
+            font-size: 1.2em; /* Ajuste o tamanho conforme necessário */
+            margin-bottom: 15px; /* Ajuste a margem inferior conforme necessário */
+        }
+
+        button {
+            border-radius: 8px; /* Ajuste o valor conforme necessário */
+        }
+
         .welcome-text {
             background-color: #fff;
             padding: 20px;
@@ -130,17 +128,22 @@ button {
             color: var(--accent-color);
             margin-bottom: 15px;
         }
-        
+
+        /* Ajuste na seção de tamanhos */
         .size-selector {
-            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: nowrap; /* Impede que as opções quebrem de linha */
+            gap: 3px; /* Espaço entre os botões */
+            overflow-x: auto; /* Permite rolar horizontalmente se necessário */
         }
-        
+
         .size-btn {
-            padding: 5px 10px;
-            margin-right: 5px;
+            padding: 5px 8px;
             background-color: #f0f0f0;
             border: 1px solid #ddd;
             cursor: pointer;
+            white-space: nowrap; /* Impede a quebra de linha nos botões */
+            margin: 0 2px;
         }
 
         .size-btn.selected {
@@ -149,6 +152,7 @@ button {
         }
         
         .color-selector {
+            margin-top: 10px;
             margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
@@ -251,7 +255,7 @@ button {
             transition: right 0.3s ease;
             padding: 20px;
             overflow-y: auto;
-font-size: 1em;
+            font-size: 1em;
         }
         
         .cart-area.open {
@@ -264,7 +268,7 @@ font-size: 1em;
             display: flex;
             align-items: center;
             justify-content: space-between;
-text-align: justify;
+            text-align: justify;
         }
         
         .cart-item img {
@@ -273,14 +277,15 @@ text-align: justify;
             object-fit: cover;
             margin-right: 10px;
         }
-.cart-item-content {
-    flex-grow: 1;
-    margin-right: 10px;
-}
 
-.cart-item-content div {
-    word-wrap: break-word; /* Quebra de linha automática para textos longos */
-}
+        .cart-item-content {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .cart-item-content div {
+            word-wrap: break-word; /* Quebra de linha automática para textos longos */
+        }
         
         .cart-item button {
             background-color: var(--accent-color);
@@ -288,13 +293,13 @@ text-align: justify;
             border: none;
             padding: 5px 10px;
             cursor: pointer;
-border-radius: 8px;
+            border-radius: 8px;
         }
         
         .cart-total {
             margin-top: 20px;
             font-weight: bold;
-text-align: center;
+            text-align: center;
         }
         
         .generate-pdf, .close-cart, .whatsapp-button {
@@ -305,7 +310,7 @@ text-align: center;
             width: 100%;
             cursor: pointer;
             margin-top: 20px;
-border-radius: 8px;
+            border-radius: 8px;
         }
         
         .close-cart {
@@ -325,7 +330,7 @@ border-radius: 8px;
             width: 100%;
             cursor: pointer;
             margin-top: 20px;
-border-radius: 8px;
+            border-radius: 8px;
         }
 
         .user-info-form {
@@ -340,20 +345,21 @@ border-radius: 8px;
             border-radius: 4px;
         }
 
-@media (max-width: 768px) {
-    .products {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    .icon-container {
-        position: static;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    header {
-        padding: 8px 0; /* Ajustado de 70px para 5px 0 */
-    }
-}
-    </style>
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .icon-container {
+                position: static;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            header {
+                padding: 8px 0;
+            }
+        }
+</style>
+
 </head>
 <body>
     <header>
@@ -378,21 +384,28 @@ border-radius: 8px;
 
         <div class="products">
             <div class="product">
-                <img src="https://ufmgdagess.github.io/lojinha/camisabasica.png" alt="Camisa Básica">
+                <img src="https://ufmgdagess.github.io/lojinha/camisa%20gest%C3%A3o%20masculina.png" alt="Camisa Gestão Masculina">
                 <div class="product-info">
-                    <div class="product-name">Camisa Básica</div>
+                    <div class="product-name">Camisa Gestão Masculina</div>
                     <div class="product-price">R$ 29,90</div>
                     <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
                         <button class="size-btn" data-size="M">M</button>
                         <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
                     </div>
                     <div class="color-selector">
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/vinho.png" alt="Vinho"></button>
-                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/azul.png" alt="Azul"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20claro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20escuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisa%20branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisa%20cinza%20claro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisa%20preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisa%20rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20verde%20escuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisa%20vinho.png" alt="Vinho"></button>
+
                     </div>
                     <div class="quantity">
                         <button class="decrease">-</button>
@@ -402,22 +415,30 @@ border-radius: 8px;
                     <button class="add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </div>
+
             <div class="product">
-                <img src="https://ufmgdagess.github.io/lojinha/camisapolo.png" alt="Camisa Polo">
+                <img src="https://ufmgdagess.github.io/lojinha/camisa%20gest%C3%A3o%20feminina.png" alt="Camisa Gestão Feminina">
                 <div class="product-info">
-                    <div class="product-name">Camisa Polo</div>
-                    <div class="product-price">R$ 49,90</div>
+                    <div class="product-name">Camisa Gestão Feminina</div>
+                    <div class="product-price">R$ 29,90</div>
                     <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
                         <button class="size-btn" data-size="M">M</button>
                         <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
                     </div>
                     <div class="color-selector">
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/vinho.png" alt="Vinho"></button>
-                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/azul.png" alt="Azul"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20claro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20escuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisa%20branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisa%20cinza%20claro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisa%20preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisa%20rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20verde%20escuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisa%20vinho.png" alt="Vinho"></button>
+
                     </div>
                     <div class="quantity">
                         <button class="decrease">-</button>
@@ -427,22 +448,30 @@ border-radius: 8px;
                     <button class="add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </div>
+
             <div class="product">
-                <img src="https://ufmgdagess.github.io/lojinha/jaqueta.png" alt="Jaqueta">
+                <img src="https://ufmgdagess.github.io/lojinha/Camisa%20UFMG%20simple%20masculina.png" alt="Camisa UFMG simples masculina">
                 <div class="product-info">
-                    <div class="product-name">Jaqueta</div>
-                    <div class="product-price">R$ 99,90</div>
+                    <div class="product-name">Camisa UFMG simples masculina</div>
+                    <div class="product-price">R$ 29,90</div>
                     <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
                         <button class="size-btn" data-size="M">M</button>
                         <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
                     </div>
                     <div class="color-selector">
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/vinho.png" alt="Vinho"></button>
-                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/azul.png" alt="Azul"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20claro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20escuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisa%20branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisa%20cinza%20claro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisa%20preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisa%20rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20verde%20escuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisa%20vinho.png" alt="Vinho"></button>
+
                     </div>
                     <div class="quantity">
                         <button class="decrease">-</button>
@@ -452,22 +481,30 @@ border-radius: 8px;
                     <button class="add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </div>
+
             <div class="product">
-                <img src="https://ufmgdagess.github.io/lojinha/moletom.png" alt="Moletom">
+                <img src="https://ufmgdagess.github.io/lojinha/Camisa%20UFMG%20simple%20feminina.png" alt="Camisa UFMG simples feminina">
                 <div class="product-info">
-                    <div class="product-name">Moletom</div>
-                    <div class="product-price">R$ 79,90</div>
+                    <div class="product-name">Camisa UFMG simples feminina</div>
+                    <div class="product-price">R$ 29,90</div>
                     <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
                         <button class="size-btn" data-size="M">M</button>
                         <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
                     </div>
                     <div class="color-selector">
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/vinho.png" alt="Vinho"></button>
-                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/azul.png" alt="Azul"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20claro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20escuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisa%20branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisa%20cinza%20claro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisa%20preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisa%20rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20verde%20escuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisa%20vinho.png" alt="Vinho"></button>
+
                     </div>
                     <div class="quantity">
                         <button class="decrease">-</button>
@@ -477,6 +514,73 @@ border-radius: 8px;
                     <button class="add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </div>
+
+            <div class="product">
+                <img src="https://ufmgdagess.github.io/lojinha/Camisa%20UFMG%20logo%20masculina.png" alt="Camisa UFMG logo masculina">
+                <div class="product-info">
+                    <div class="product-name">Camisa UFMG logo masculina</div>
+                    <div class="product-price">R$ 29,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20claro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20escuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisa%20branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisa%20cinza%20claro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisa%20preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisa%20rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20verde%20escuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisa%20vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="https://ufmgdagess.github.io/lojinha/Camisa%20UFMG%20logo%20feminina.png" alt="Camisa UFMG logo feminina">
+                <div class="product-info">
+                    <div class="product-name">Camisa UFMG logo feminina</div>
+                    <div class="product-price">R$ 29,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20claro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20escuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisa%20branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisa%20cinza%20claro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisa%20preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisa%20rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20verde%20escuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisa%20vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
