@@ -408,10 +408,10 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="camisagestaomasculina.png" alt="Camisa Gestão Masculina - Imagem 1">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/masculina.png" alt="Camisa Gestão Masculina - Imagem 1">
                         </div>
                         <div class="swiper-slide">
-                            <img src="camisamasculinatamanho.png" alt="Camisa Gestão Masculina - Imagem 2">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/tamanhosmasculinos.png" alt="Camisa Gestão Masculina - Imagem 2">
                         </div>
                         <!-- Adicione mais slides conforme necessário -->
                     </div>
@@ -434,14 +434,14 @@
                         <button class="size-btn" data-size="XG">XG</button>
                     </div>
                     <div class="color-selector">
-                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20claro.png" alt="Azul Claro"></button>
-                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20azul%20escuro.png" alt="Azul Escuro"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisa%20branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisa%20cinza%20claro.png" alt="Cinza"></button>
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisa%20preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisa%20rosa.png" alt="Rosa"></button>
-                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisa%20verde%20escuro.png" alt="Verde Escuro"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisa%20vinho.png" alt="Vinho"></button>
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulclaro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/cinzaclaro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/verdeescuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/vinho.png" alt="Vinho"></button>
 
                     </div>
                     <div class="quantity">
