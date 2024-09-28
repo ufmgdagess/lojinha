@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <base href="https://api.whatsapp.com/send?phone=553192990360">
+    <base href="https://api.whatsapp.com/send?phone=55">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja DAGESS</title>
@@ -35,7 +35,6 @@
         --text-color: #333;
     }
     
-    /* Estilos gerais */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -119,11 +118,11 @@
         position: relative;
     }
 
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .swiper-slide img {
         width: 100%;
         height: auto;
@@ -268,19 +267,18 @@
     .cart-area {
         position: fixed;
         top: 0;
-        right: -300px;
-        width: 300px;
-        height: 100vh;
-        background-color: white;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
-        padding: 20px;
-        overflow-y: auto;
-        font-size: 1em;
-    }
-    
-    .cart-area.open {
         right: 0;
+        width: 300px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        z-index: 1000; /* Garante que fique sobre outros elementos */
+        display: none; /* Inicialmente oculto */
+        overflow-y: auto; /* Permite rolagem se necessário */
+    }
+
+    .cart-area.open {
+        display: block; /* Mostra o carrinho quando aberto */
     }
     
     .cart-item {
@@ -387,16 +385,13 @@
         <img src="https://ufmgdagess.github.io/lojinha/logo.png" alt="Logo do Diretório Acadêmico" class="logo">
         <h1>Loja DAGESS</h1>
         <div class="icon-container">
-            <div class="cart-icon">
-                <!-- Ícone do carrinho -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"></path>
-                </svg>
-                <span class="cart-counter">0</span>
-            </div>
-        </div>
+    <div class="cart-icon">
+
+        <img src="https://ufmgdagess.github.io/lojinha/carrinho.png" alt="Carrinho" width="24" height="24">
+
+        <span class="cart-counter">0</span>
+    </div>
+</div>
     </header>
 
     <div class="container">
@@ -430,7 +425,7 @@
                 <!-- Fim do carrossel -->
                 <div class="product-info">
                     <div class="product-name">Camisa Gestão Masculina</div>
-                    <div class="product-price">R$ 29,90</div>
+                    <div class="product-price">R$ 00,01</div>
                     <div class="size-selector">
                         <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
@@ -482,7 +477,7 @@
                 <!-- Fim do carrossel -->
                 <div class="product-info">
                     <div class="product-name">Camisa Gestão Feminina</div>
-                    <div class="product-price">R$ 29,90</div>
+                    <div class="product-price">R$ 00,01</div>
                     <div class="size-selector">
                         <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
@@ -534,7 +529,7 @@
                 <!-- Fim do carrossel -->
                 <div class="product-info">
                     <div class="product-name">Camisa UFMG Masculina</div>
-                    <div class="product-price">R$ 29,90</div>
+                    <div class="product-price">R$ 00,01</div>
                     <div class="size-selector">
                         <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
@@ -586,7 +581,7 @@
                 <!-- Fim do carrossel -->
                 <div class="product-info">
                     <div class="product-name">Camisa UFMG Feminina</div>
-                    <div class="product-price">R$ 29,90</div>
+                    <div class="product-price">R$ 00,01</div>
                     <div class="size-selector">
                         <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
@@ -622,7 +617,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisaufmg/ufmgmasculinalgo.png" alt="Camisa UFMG Masculina Logo">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisaufmg/ufmgmasculinalogo.png" alt="Camisa UFMG Masculina Logo">
                         </div>
                         <div class="swiper-slide">
                             <img src="https://ufmgdagess.github.io/lojinha/camisagestao/tamanhosmasculinos.png" alt="Tamanhos Masculinos">
@@ -638,7 +633,7 @@
                 <!-- Fim do carrossel -->
                 <div class="product-info">
                     <div class="product-name">Camisa UFMG Masculina Logo</div>
-                    <div class="product-price">R$ 29,90</div>
+                    <div class="product-price">R$ 00,01</div>
                     <div class="size-selector">
                         <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
@@ -690,7 +685,7 @@
                 <!-- Fim do carrossel -->
                 <div class="product-info">
                     <div class="product-name">Camisa UFMG Feminina Logo</div>
-                    <div class="product-price">R$ 29,90</div>
+                    <div class="product-price">R$ XX,XX</div>
                     <div class="size-selector">
                         <button class="size-btn" data-size="PP">PP</button>
                         <button class="size-btn" data-size="P">P</button>
@@ -720,202 +715,6 @@
             </div>
 
 
-<!-- Produto 7 com carrossel -->
-
-            <div class="product">
-                <!-- Início do carrossel -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/masculina.png" alt="Camisa Polo Masculina">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/tamanhosmasculinos.png" alt="Tamanhos Masculinos">
-                        </div>
-                        <!-- Adicione mais slides conforme necessário -->
-                    </div>
-                    <!-- Botões de navegação -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <!-- Paginação (opcional) -->
-                    <!-- <div class="swiper-pagination"></div> -->
-                </div>
-                <!-- Fim do carrossel -->
-                <div class="product-info">
-                    <div class="product-name">Camisa Polo Masculina</div>
-                    <div class="product-price">R$ 29,90</div>
-                    <div class="size-selector">
-                        <button class="size-btn" data-size="PP">PP</button>
-                        <button class="size-btn" data-size="P">P</button>
-                        <button class="size-btn" data-size="M">M</button>
-                        <button class="size-btn" data-size="G">G</button>
-                        <button class="size-btn" data-size="GG">GG</button>
-                        <button class="size-btn" data-size="XG">XG</button>
-                    </div>
-                    <div class="color-selector">
-                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/azul.png" alt="Azul"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/cinza.png" alt="Cinza"></button>
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/vinho.png" alt="Vinho"></button>
-
-                    </div>
-                    <div class="quantity">
-                        <button class="decrease">-</button>
-                        <input type="number" value="1" min="1">
-                        <button class="increase">+</button>
-                    </div>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-<!-- Produto 8 com carrossel -->
-
-            <div class="product">
-                <!-- Início do carrossel -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/feminina.png" alt="Camisa Polo Feminina">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/tamanhosfemininos.png" alt="Tamanhos Femininos">
-                        </div>
-                        <!-- Adicione mais slides conforme necessário -->
-                    </div>
-                    <!-- Botões de navegação -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <!-- Paginação (opcional) -->
-                    <!-- <div class="swiper-pagination"></div> -->
-                </div>
-                <!-- Fim do carrossel -->
-                <div class="product-info">
-                    <div class="product-name">Camisa Polo Feminina</div>
-                    <div class="product-price">R$ 29,90</div>
-                    <div class="size-selector">
-                        <button class="size-btn" data-size="PP">PP</button>
-                        <button class="size-btn" data-size="P">P</button>
-                        <button class="size-btn" data-size="M">M</button>
-                        <button class="size-btn" data-size="G">G</button>
-                        <button class="size-btn" data-size="GG">GG</button>
-                        <button class="size-btn" data-size="XG">XG</button>
-                    </div>
-                    <div class="color-selector">
-                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/azul.png" alt="Azul"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/cinza.png" alt="Cinza"></button>
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/vinho.png" alt="Vinho"></button>
-
-                    </div>
-                    <div class="quantity">
-                        <button class="decrease">-</button>
-                        <input type="number" value="1" min="1">
-                        <button class="increase">+</button>
-                    </div>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-<!-- Produto 9 com carrossel -->
-
-            <div class="product">
-                <!-- Início do carrossel -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/masculinalogo.png" alt="Camisa Polo Masculina Logo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/tamanhosmasculinos.png" alt="Tamanhos Masculinos">
-                        </div>
-                        <!-- Adicione mais slides conforme necessário -->
-                    </div>
-                    <!-- Botões de navegação -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <!-- Paginação (opcional) -->
-                    <!-- <div class="swiper-pagination"></div> -->
-                </div>
-                <!-- Fim do carrossel -->
-                <div class="product-info">
-                    <div class="product-name">Camisa Polo Masculina Logo</div>
-                    <div class="product-price">R$ 29,90</div>
-                    <div class="size-selector">
-                        <button class="size-btn" data-size="PP">PP</button>
-                        <button class="size-btn" data-size="P">P</button>
-                        <button class="size-btn" data-size="M">M</button>
-                        <button class="size-btn" data-size="G">G</button>
-                        <button class="size-btn" data-size="GG">GG</button>
-                        <button class="size-btn" data-size="XG">XG</button>
-                    </div>
-                    <div class="color-selector">
-                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/azul.png" alt="Azul"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/cinza.png" alt="Cinza"></button>
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/vinho.png" alt="Vinho"></button>
-
-                    </div>
-                    <div class="quantity">
-                        <button class="decrease">-</button>
-                        <input type="number" value="1" min="1">
-                        <button class="increase">+</button>
-                    </div>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
-<!-- Produto 10 com carrossel -->
-
-            <div class="product">
-                <!-- Início do carrossel -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/femininalogo.png" alt="Camisa Polo Feminina Logo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/tamanhosfemininos.png" alt="Tamanhos Femininos">
-                        </div>
-                        <!-- Adicione mais slides conforme necessário -->
-                    </div>
-                    <!-- Botões de navegação -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <!-- Paginação (opcional) -->
-                    <!-- <div class="swiper-pagination"></div> -->
-                </div>
-                <!-- Fim do carrossel -->
-                <div class="product-info">
-                    <div class="product-name">Camisa Polo Feminina Logo</div>
-                    <div class="product-price">R$ 29,90</div>
-                    <div class="size-selector">
-                        <button class="size-btn" data-size="PP">PP</button>
-                        <button class="size-btn" data-size="P">P</button>
-                        <button class="size-btn" data-size="M">M</button>
-                        <button class="size-btn" data-size="G">G</button>
-                        <button class="size-btn" data-size="GG">GG</button>
-                        <button class="size-btn" data-size="XG">XG</button>
-                    </div>
-                    <div class="color-selector">
-                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/azul.png" alt="Azul"></button>
-                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/branco.png" alt="Branco"></button>
-                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/cinza.png" alt="Cinza"></button>
-                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/preto.png" alt="Preto"></button>
-                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/vinho.png" alt="Vinho"></button>
-
-                    </div>
-                    <div class="quantity">
-                        <button class="decrease">-</button>
-                        <input type="number" value="1" min="1">
-                        <button class="increase">+</button>
-                    </div>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-
 
                 <!-- Repita o mesmo para os demais produtos, garantindo que cada um tenha seu próprio carrossel com as imagens correspondentes -->
 
@@ -924,47 +723,207 @@
 
         <!-- Área do Carrinho de Compras (permanece a mesma) -->
         <div class="cart-area">
-            <!-- Conteúdo do carrinho -->
+        <img src="https://ufmgdagess.github.io/lojinha/logo.png" alt="Logo" style="width: 100px; margin-bottom: 10px;">
+        <h2>Carrinho de Encomendas</h2>
+        <button class="close-cart">Voltar</button>
+        <div class="cart-items"></div>
+        <div class="cart-total">Total: R$ 0.00</div>
+        <input type="text" id="user-name" placeholder="Nome" required>
+        <input type="email" id="user-email" placeholder="E-mail" required>
+        <input type="tel" id="user-whatsapp" placeholder="WhatsApp" required>
+        <button class="generate-pdf" disabled>Gerar PDF</button>
+        <a href="https://api.whatsapp.com/send?phone=55" target="_blank" class="whatsapp-button">WhatsApp</a>
         </div>
 
         <!-- Swiper JS -->
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-        <!-- Seu script personalizado -->
-        <script>
-            // Inicializa todos os carrosséis
-            document.addEventListener('DOMContentLoaded', function() {
-                const swipers = [];
-                document.querySelectorAll('.swiper-container').forEach(function(container, index) {
-                    swipers[index] = new Swiper(container, {
-                        loop: true,
-                        navigation: {
-                            nextEl: container.querySelector('.swiper-button-next'),
-                            prevEl: container.querySelector('.swiper-button-prev'),
-                        },
-                        // Se quiser adicionar paginação
-                        // pagination: {
-                        //     el: container.querySelector('.swiper-pagination'),
-                        //     clickable: true,
-                        // },
-                    });
-                });
-
-                // Resto do seu código JavaScript (manipulação do carrinho, eventos, etc.)
-
-                // Exemplo de código existente:
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-                function updateCartCounter() {
-                    const counter = document.querySelector('.cart-counter');
-                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-                    counter.textContent = totalItems;
-                    counter.style.display = totalItems > 0 ? 'block' : 'none';
-                }
-
-                // Continue com o restante do seu código JavaScript existente...
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa todos os carrosséis
+        const swipers = [];
+        document.querySelectorAll('.swiper-container').forEach(function(container, index) {
+            swipers[index] = new Swiper(container, {
+                loop: true,
+                navigation: {
+                    nextEl: container.querySelector('.swiper-button-next'),
+                    prevEl: container.querySelector('.swiper-button-prev'),
+                },
             });
-        </script>
-    </body>
-    </html>
+        });
+
+        // Carrinho de compras
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCounter() {
+            const counter = document.querySelector('.cart-counter');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            counter.textContent = totalItems;
+            counter.style.display = totalItems > 0 ? 'block' : 'none';
+        }
+
+        function updateCart(product, size, color, quantity, price, image) {
+            let existingItem = cart.find(item => item.product === product && item.size === size && item.color === color);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ product, size, color, quantity, price, image });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCounter();
+            displayCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCounter();
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartItems = document.querySelector('.cart-items');
+            const cartTotal = document.querySelector('.cart-total');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.product}">
+                    <div class="cart-item-content">
+                        <div>${item.product} - Tamanho: ${item.size} - Cor: ${item.color}</div>
+                        <div>Quantidade: ${item.quantity} - R$ ${itemTotal.toFixed(2)}</div>
+                    </div>
+                    <button class="remove-item" data-index="${index}">Remover</button>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+            
+            // Adiciona evento de remoção aos botões
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeFromCart(index);
+                });
+            });
+        }
+
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const whatsapp = document.getElementById('user-whatsapp').value;
+
+            // Logotipo
+            const logoWidth = 20;
+            const logoHeight = 20;
+            doc.addImage('https://ufmgdagess.github.io/lojinha/logo.png', 'PNG', 10, 10, logoWidth, logoHeight);
+
+            doc.setFontSize(18);
+            doc.text('Encomenda para a Loja DAGESS', 10, 40);
+
+            doc.setFontSize(12);
+            doc.text(`Nome: ${name}`, 10, 50);
+            doc.text(`E-mail: ${email}`, 10, 60);
+            doc.text(`WhatsApp: ${whatsapp}`, 10, 70);
+
+            let yPosition = 90;
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                doc.addImage(item.image, 'JPEG', 10, yPosition, 20, 20);
+                const itemText = `${index + 1}. ${item.product} - Tamanho: ${item.size} - Cor: ${item.color} - Quantidade: ${item.quantity}`;
+                doc.text(itemText, 35, yPosition + 10);
+
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                doc.text(`Preço: R$ ${itemTotal.toFixed(2)}`, 35, yPosition + 20);
+
+                yPosition += 30;
+            });
+
+            doc.setFontSize(14);
+            doc.text(`Total: R$ ${total.toFixed(2)}`, 10, yPosition + 10);
+            doc.save('pedido_diretorio_academico.pdf');
+        }
+
+        // Eventos
+        document.querySelector('.generate-pdf').addEventListener('click', generatePDF);
+
+        // Verifica campos do formulário
+        function checkFields() {
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const whatsapp = document.getElementById('user-whatsapp').value;
+            const generatePdfButton = document.querySelector('.generate-pdf');
+            
+            generatePdfButton.disabled = !(name && email && whatsapp);
+        }
+
+        // Adiciona eventos de input nos campos do formulário
+        document.getElementById('user-name').addEventListener('input', checkFields);
+        document.getElementById('user-email').addEventListener('input', checkFields);
+        document.getElementById('user-whatsapp').addEventListener('input', checkFields);
+
+        // Manipulação da quantidade
+        document.querySelectorAll('.quantity button').forEach(button => {
+            button.addEventListener('click', function() {
+                let input = this.parentNode.querySelector('input');
+                let value = parseInt(input.value);
+                if (this.classList.contains('decrease') && value > 1) {
+                    input.value = value - 1;
+                } else {
+                    input.value = value + 1;
+                }
+            });
+        });
+
+        // Adiciona produtos ao carrinho
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                let productInfo = this.closest('.product-info');
+                let product = productInfo.querySelector('.product-name').textContent;
+                let size = productInfo.querySelector('.size-btn.selected').dataset.size;
+                let color = productInfo.querySelector('.color-btn.selected').dataset.color;
+                let quantity = parseInt(productInfo.querySelector('input').value);
+                let price = parseFloat(productInfo.querySelector('.product-price').textContent.replace('R$ ', '').replace(',', '.'));
+                let image = this.closest('.product').querySelector('img').src;
+                updateCart(product, size, color, quantity, price, image);
+            });
+        });
+
+        document.querySelector('.cart-icon').addEventListener('click', function() {
+            document.querySelector('.cart-area').classList.toggle('open');
+        });
+
+        document.querySelector('.close-cart').addEventListener('click', function() {
+            document.querySelector('.cart-area').classList.remove('open');
+        });
+
+        // Seleciona tamanho e cor
+        document.querySelectorAll('.size-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.closest('.size-selector');
+                parent.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        document.querySelectorAll('.color-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.closest('.color-selector');
+                parent.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        updateCartCounter();
+        displayCart();
+    });
+</script>
