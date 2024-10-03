@@ -1164,123 +1164,67 @@
         }
 
         function generatePDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-    
-            const marginLeft = 15; // Margem esquerda
-            const marginright = 15; // Margem direita
-            const marginTop = 20;  // Margem superior
-            const pageWidth = doc.internal.pageSize.getWidth();
-            const usableWidth = pageWidth - marginLeft * 2;
-            
-            const name = document.getElementById('user-name').value;
-            const email = document.getElementById('user-email').value;
-            const whatsapp = document.getElementById('user-whatsapp').value;
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-            // Logotipo
-            const logoWidth = 20;
-            const logoHeight = 20;
-            doc.addImage('https://ufmgdagess.github.io/lojinha/logo.png', 'PNG', 10, 10, logoWidth, logoHeight);
+    const marginLeft = 15; // Margem esquerda
+    const marginTop = 20;  // Margem superior
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const usableWidth = pageWidth - marginLeft * 2;
 
-            doc.setFontSize(18);
-            doc.text('Encomenda para a Loja DAGESS', 10, 40);
+    const name = document.getElementById('user-name').value;
+    const email = document.getElementById('user-email').value;
+    const whatsapp = document.getElementById('user-whatsapp').value;
 
-            doc.setFontSize(12);
-            doc.text(`Nome: ${name}`, 10, 50);
-            doc.text(`E-mail: ${email}`, 10, 60);
-            doc.text(`WhatsApp: ${whatsapp}`, 10, 70);
+    // Adicionar logotipo
+    const logoWidth = 20;
+    const logoHeight = 20;
+    doc.addImage('https://ufmgdagess.github.io/lojinha/logo.png', 'PNG', marginLeft, marginTop, logoWidth, logoHeight);
 
-            let yPosition = 90;
-            let total = 0;
+    // Adicionar título
+    doc.setFontSize(18);
+    doc.text('Encomenda para a Loja DAGESS', marginLeft, marginTop + 35);
 
-            cart.forEach((item, index) => {
-                doc.addImage(item.image, 'JPEG', 10, yPosition, 20, 20);
-                const itemText = `${index + 1}. ${item.product} - Tamanho: ${item.size} - Cor: ${item.color} - Quantidade: ${item.quantity}`;
-                doc.text(itemText, 35, yPosition + 10);
+    // Adicionar informações do usuário
+    doc.setFontSize(12);
+    doc.text(`Nome: ${name}`, marginLeft, marginTop + 45);
+    doc.text(`E-mail: ${email}`, marginLeft, marginTop + 55);
+    doc.text(`WhatsApp: ${whatsapp}`, marginLeft, marginTop + 65);
 
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                doc.text(`Preço: R$ ${itemTotal.toFixed(2)}`, 35, yPosition + 20);
+    let yPosition = marginTop + 85; // Posicionamento inicial para os itens do carrinho
+    let total = 0;
 
-                yPosition += 30;
-            });
-
-            doc.setFontSize(14);
-            doc.text(`Total: R$ ${total.toFixed(2)}`, 10, yPosition + 10);
-            doc.save('pedido_diretorio_academico.pdf');
+    cart.forEach((item, index) => {
+        if (yPosition > 270) { // Adiciona uma nova página quando necessário
+            doc.addPage();
+            yPosition = marginTop; // Redefine a posição inicial na nova página
         }
 
-        // Eventos
-        document.querySelector('.generate-pdf').addEventListener('click', generatePDF);
+        // Adicionar imagem do produto
+        doc.addImage(item.image, 'JPEG', marginLeft, yPosition, 20, 20);
 
-        // Verifica campos do formulário
-        function checkFields() {
-            const name = document.getElementById('user-name').value;
-            const email = document.getElementById('user-email').value;
-            const whatsapp = document.getElementById('user-whatsapp').value;
-            const generatePdfButton = document.querySelector('.generate-pdf');
-            
-            generatePdfButton.disabled = !(name && email && whatsapp);
-        }
+        // Adicionar descrição do item
+        const itemText = `${index + 1}. ${item.product} - Tamanho: ${item.size} - Cor: ${item.color} - Quantidade: ${item.quantity}`;
+        doc.text(itemText, marginLeft + 25, yPosition + 10);
 
-        // Adiciona eventos de input nos campos do formulário
-        document.getElementById('user-name').addEventListener('input', checkFields);
-        document.getElementById('user-email').addEventListener('input', checkFields);
-        document.getElementById('user-whatsapp').addEventListener('input', checkFields);
+        // Calcular e adicionar o preço total do item
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        doc.text(`Preço: R$ ${itemTotal.toFixed(2)}`, marginLeft + 25, yPosition + 20);
 
-        // Manipulação da quantidade
-        document.querySelectorAll('.quantity button').forEach(button => {
-            button.addEventListener('click', function() {
-                let input = this.parentNode.querySelector('input');
-                let value = parseInt(input.value);
-                if (this.classList.contains('decrease') && value > 1) {
-                    input.value = value - 1;
-                } else {
-                    input.value = value + 1;
-                }
-            });
-        });
-
-        // Adiciona produtos ao carrinho
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                let productInfo = this.closest('.product-info');
-                let product = productInfo.querySelector('.product-name').textContent;
-                let size = productInfo.querySelector('.size-btn.selected').dataset.size;
-                let color = productInfo.querySelector('.color-btn.selected').dataset.color;
-                let quantity = parseInt(productInfo.querySelector('input').value);
-                let price = parseFloat(productInfo.querySelector('.product-price').textContent.replace('R$ ', '').replace(',', '.'));
-                let image = this.closest('.product').querySelector('img').src;
-                updateCart(product, size, color, quantity, price, image);
-            });
-        });
-
-        document.querySelector('.cart-icon').addEventListener('click', function() {
-            document.querySelector('.cart-area').classList.toggle('open');
-        });
-
-        document.querySelector('.close-cart').addEventListener('click', function() {
-            document.querySelector('.cart-area').classList.remove('open');
-        });
-
-        // Seleciona tamanho e cor
-        document.querySelectorAll('.size-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const parent = this.closest('.size-selector');
-                parent.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('selected'));
-                this.classList.add('selected');
-            });
-        });
-
-        document.querySelectorAll('.color-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const parent = this.closest('.color-selector');
-                parent.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('selected'));
-                this.classList.add('selected');
-            });
-        });
-
-        updateCartCounter();
-        displayCart();
+        yPosition += 30; // Ajustar posição para o próximo item
     });
+
+    // Adicionar o total geral
+    doc.setFontSize(14);
+    if (yPosition > 270) { // Verificar se é necessário uma nova página antes do total
+        doc.addPage();
+        yPosition = marginTop;
+    }
+    doc.text(`Total: R$ ${total.toFixed(2)}`, marginLeft, yPosition + 10);
+
+    // Salvar o PDF
+    doc.save('pedido_diretorio_academico.pdf');
+}
+
 </script>
