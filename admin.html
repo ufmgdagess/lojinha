@@ -8,6 +8,8 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
 
         /* Estilo do pop-up de senha */
@@ -38,7 +40,7 @@
         }
 
         .admin-area {
-            display: none;
+            display: none; /* A área de administração é inicialmente escondida */
             padding: 20px;
         }
 
@@ -89,8 +91,8 @@
     function checkPassword() {
         const password = document.getElementById('admin-password').value;
         if (password === '1424') {
-            document.getElementById('password-popup').style.display = 'none';
-            document.getElementById('admin-area').style.display = 'block';
+            document.getElementById('password-popup').style.display = 'none'; // Esconde o pop-up
+            document.getElementById('admin-area').style.display = 'block'; // Exibe a área de administração
             loadIndexContent(); // Carregar o conteúdo do index.html embutido
         } else {
             alert('Senha incorreta!');
@@ -100,7 +102,7 @@
     // Função para carregar o conteúdo do index.html diretamente embutido
     function loadIndexContent() {
         const indexHtmlContent = `
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <base href="https://api.whatsapp.com/send?phone=553192990360">
@@ -1381,7 +1383,6 @@
         displayCart();
     });
 </script>
-
         `; // Aqui insira o conteúdo do index.html manualmente como uma string
 
         const parser = new DOMParser();
