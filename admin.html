@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Página de Vendas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Estilo do pop-up de senha */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .popup input {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+
+        .admin-area {
+            display: none;
+            padding: 20px;
+        }
+
+        /* Botão de gerar HTML */
+        #generate-html {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #generate-html:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilos adicionais */
+    </style>
+</head>
+<body>
+
+<!-- Pop-up de senha -->
+<div id="password-popup" class="popup">
+    <div class="popup-content">
+        <h2>Digite a senha de administrador</h2>
+        <input type="password" id="admin-password" placeholder="Senha">
+        <br>
+        <button onclick="checkPassword()">Entrar</button>
+    </div>
+</div>
+
+<!-- Área de administração -->
+<div id="admin-area" class="admin-area">
+    <h1>Admin - Edição de Página de Vendas</h1>
+    
+    <!-- Campos de edição -->
+    <div id="editable-fields">
+        <!-- Os campos editáveis do index.html serão gerados aqui dinamicamente -->
+    </div>
+
+    <!-- Botão para gerar HTML -->
+    <button id="generate-html">Gerar HTML</button>
+</div>
+
+<script>
+    // Função para validar a senha
+    function checkPassword() {
+        const password = document.getElementById('admin-password').value;
+        if (password === '1424') {
+            document.getElementById('password-popup').style.display = 'none';
+            document.getElementById('admin-area').style.display = 'block';
+            loadIndexFile(); // Carregar o arquivo index.html para edição
+        } else {
+            alert('Senha incorreta!');
+        }
+    }
+
+    // Função para carregar o conteúdo do index.html
+    function loadIndexFile() {
+        fetch('index.html')
+        .then(response => response.text())
+        .then(data => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+            generateEditableFields(doc);
+        })
+        .catch(error => console.error('Erro ao carregar o index.html:', error));
+    }
+
+    // Função para gerar campos de edição com base no conteúdo do index.html
+    function generateEditableFields(doc) {
+        const editableFields = document.getElementById('editable-fields');
+        editableFields.innerHTML = ''; // Limpa qualquer campo anterior
+
+        // Exemplo: seleciona todos os parágrafos, links, e títulos editáveis
+        const elementsToEdit = doc.querySelectorAll('h1, h2, p, a');
+
+        elementsToEdit.forEach((el, index) => {
+            const fieldContainer = document.createElement('div');
+            let value = el.textContent;
+            let type = 'text';
+
+            if (el.tagName.toLowerCase() === 'a') {
+                value = el.href; // Para links, pega o href
+                type = 'url'; // Define o tipo do input para URL
+            }
+
+            fieldContainer.innerHTML = `<label>${el.tagName} - Conteúdo:</label><br>
+                                        <input type="${type}" id="field-${index}" value="${value}"><br><br>`;
+            editableFields.appendChild(fieldContainer);
+        });
+    }
+
+    // Função para gerar e baixar o HTML editado
+    document.getElementById('generate-html').addEventListener('click', function() {
+        const editableFields = document.querySelectorAll('#editable-fields input');
+        let newHTML = '';
+
+        editableFields.forEach(field => {
+            const value = field.value;
+            newHTML += value + '\n'; // Simulação: adicionar o valor atualizado (realmente, aqui seria gerar o novo HTML)
+        });
+
+        // Gerar o arquivo HTML para download
+        const blob = new Blob([newHTML], { type: 'text/html' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'pagina-editada.html';
+        link.click();
+    });
+</script>
+
+</body>
+</html>
