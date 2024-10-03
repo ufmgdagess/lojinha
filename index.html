@@ -1166,7 +1166,13 @@
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-
+    
+            const marginLeft = 15; // Margem esquerda
+            const marginright = 15; // Margem direita
+            const marginTop = 20;  // Margem superior
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const usableWidth = pageWidth - marginLeft * 2;
+            
             const name = document.getElementById('user-name').value;
             const email = document.getElementById('user-email').value;
             const whatsapp = document.getElementById('user-whatsapp').value;
