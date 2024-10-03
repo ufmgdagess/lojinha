@@ -100,13 +100,23 @@
     // Função para carregar o conteúdo do index.html
     function loadIndexFile() {
         fetch('index.html')
-        .then(response => response.text())
+        .then(response => {
+            // Verificar se a resposta é ok
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(data => {
+            console.log('Conteúdo do index.html carregado:', data); // Log para verificar o conteúdo
             const parser = new DOMParser();
             const doc = parser.parseFromString(data, 'text/html');
             generateEditableFields(doc);
         })
-        .catch(error => console.error('Erro ao carregar o index.html:', error));
+        .catch(error => {
+            console.error('Erro ao carregar o index.html:', error);
+            alert('Falha ao carregar o arquivo index.html.');
+        });
     }
 
     // Função para gerar campos de edição com base no conteúdo do index.html
@@ -116,6 +126,11 @@
 
         // Exemplo: seleciona todos os parágrafos, links, e títulos editáveis
         const elementsToEdit = doc.querySelectorAll('h1, h2, p, a');
+
+        if (elementsToEdit.length === 0) {
+            editableFields.innerHTML = '<p>Nenhum campo editável encontrado.</p>';
+            return;
+        }
 
         elementsToEdit.forEach((el, index) => {
             const fieldContainer = document.createElement('div');
