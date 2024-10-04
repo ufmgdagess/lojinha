@@ -1,0 +1,1308 @@
+<html lang="pt-BR"><head>
+    <base href="https://api.whatsapp.com/send?phone=553192990360">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja DAGESS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ufmgdagess.github.io/lojinha/logo2.png">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Loja DAGESS">
+    <meta property="og:description" content="Bem-vindo à lojinha do DAGESS!">
+    <meta property="og:image" content="https://ufmgdagess.github.io/lojinha/logo2.png">
+    <meta property="og:url" content="https://ufmgdagess.github.io/lojinha/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Loja DAGESS">
+    <meta name="twitter:description" content="Bem-vindo à lojinha do DAGESS!">
+    <meta name="twitter:image" content="https://ufmgdagess.github.io/lojinha/logo2.png">
+
+<style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --background-color: #ecf0f1;
+        --text-color: #333;
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+    
+    header {
+        background: linear-gradient(to right, #fdbb45, #d61c5b, #73d2de);
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        position: relative;
+    }
+    
+    .logo {
+        max-width: 100px;
+        height: auto;
+        margin-bottom: 0px;
+    }
+    
+    h1 {
+        margin-top: 0px;
+        font-size: 2em;
+    }
+    .cart-area h2 {
+        text-align: center;
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    button {
+        border-radius: 8px;
+    }
+
+    .welcome-text {
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1000px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .product {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .product:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Estilos do Carrossel */
+    .swiper-container {
+        width: 100%;
+        position: relative;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-slide img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        color: #fff;
+    }
+    
+    .product-info {
+        padding: 20px;
+    }
+    
+    .product-name {
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .product-price {
+        font-size: 1.1em;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        text-align: center; /* Adicionado para centralizar o preço */
+    }
+
+    /* Ajuste na seção de tamanhos */
+    .size-selector {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 3px;
+        overflow-x: auto;
+        justify-content: center;
+    }
+
+    .size-btn {
+        padding: 5px 8px;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        white-space: nowrap;
+        margin: 0 2px;
+        flex-grow: 0; /* Adicionado para evitar redimensionamento */
+        flex-shrink: 0; /* Adicionado para evitar redimensionamento */
+    }
+
+    .size-btn.selected {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .color-selector {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .color-btn {
+        width: 25px;
+        height: 25px;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 2px;
+    }
+
+    .color-btn img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .color-btn.selected {
+        border: 2px solid var(--primary-color);
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Adicionado para centralizar a quantidade */
+        margin-bottom: 15px;
+    }
+    
+    .quantity input {
+        width: 50px;
+        text-align: center;
+        font-size: 1em;
+        margin: 0 10px;
+    }
+    
+    .quantity button {
+        background-color: var(--primary-color);
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    
+    .add-to-cart {
+        background-color: var(--primary-color);
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+    }
+    
+    .add-to-cart:hover {
+        background-color: #2980b9;
+    }
+    
+    .cart-icon {
+        background-color: var(--accent-color);
+        color: #fff;
+        padding: 10px;
+        border-radius: 30%;
+        cursor: pointer;
+        z-index: 1000;
+        position: relative;
+    }
+    
+    .cart-counter {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 10px;
+    }
+    
+    .icon-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+    }
+    
+    .cart-area {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 350px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        z-index: 1000; /* Garante que fique sobre outros elementos */
+        display: none; /* Inicialmente oculto */
+        overflow-y: auto; /* Permite rolagem se necessário */
+        padding: 20px;
+        font-size: 10px; /* Ajuste o valor conforme o tamanho que deseja */
+    }
+
+    .cart-area.open {
+        display: block; /* Mostra o carrinho quando aberto */
+    }
+    
+    .cart-item {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: justify;
+    }
+    
+    .cart-item img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .cart-item-content {
+        flex-grow: 1;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .cart-item-content div {
+        word-wrap: break-word;
+    }
+    
+    .cart-item button {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    
+    .cart-total {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .generate-pdf, .close-cart, .whatsapp-button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        margin: 15px;
+        border-radius: 8px;
+    }
+    
+    .close-cart {
+        background-color: var(--secondary-color);
+    }
+
+    .cart-area img {
+        display: block;
+        margin: 0 auto 10px;
+    }
+
+    .whatsapp-button {
+        background-color: #25D366;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+
+    .user-info-form {
+        margin-top: 20px;
+    }
+
+    .user-info-form input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+        .products {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .icon-container {
+            position: static;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        header {
+            padding: 8px 0;
+        }
+    }
+</style>
+
+</head>
+<body contenteditable="true">
+    <header>
+        <img src="https://ufmgdagess.github.io/lojinha/logo.png" alt="Logo do Diretório Acadêmico" class="logo">
+        <h1>Loja DAGESS</h1>
+        <div class="icon-container">
+    <div class="cart-icon">
+
+        <img src="https://ufmgdagess.github.io/lojinha/carrinho.png" alt="Carrinho" width="24" height="24">
+
+        <span class="cart-counter" style="display: block;">4</span>
+    </div>
+</div>
+    </header>
+
+    <div class="container">
+        <div class="welcome-text">
+            <p><b>Bem vindo à lojinha do Diretório Acadêmico do curso de Gestão em Serviços de Saúde!</b></p>
+            <p>Nossos produtos são feitos por encomenda, então, escolha o item, tamanho, cor, quantidade e envie para o carrinho de compras. Quando terminar de escolher, acesse o carrinho, preencha os seus dados completos e gere o PDF com o pedido, depois envie para nosso WhatsApp para efetivar a encomenda e realizar o pagamento!</p>
+            <p>Formas de pagamento: dinheiro, PIX* ou cartão de crédito**.</p>
+            <p>Previsão de fechamento do pedido: 18/10/2024</p>
+            <br>
+            <p>*Para pagamento via PIX, pode fazer a transferência para a chave: ufmgdagess@gmail.com, e envie o comprovante junto com o PDF do pedido.</p>
+            <p>**Para pagamento no cartão de crédito terá um acrescimo da taxa da maquininha.</p>
+        </div>
+
+        <div class="products">
+
+<!-- Produto 1 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-b3fcefd5509ff9da" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(-273px, 0px, 0px); transition-delay: 0ms;">
+                        <div class="swiper-slide swiper-slide-next swiper-slide-prev" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://montinkantigo.s3.amazonaws.com/data/camisas/rola-5b15f885c51e6-2.png" alt="Camisa Gola Redonda – Gestão">
+                        </div>
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/tamanhosmasculinos.png" alt="Tamanhos Gola Redonda – Gestão">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-b3fcefd5509ff9da"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-b3fcefd5509ff9da"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Camisa rola</div>
+                    <div class="product-price">R$ 69,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn selected" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulclaro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/cinzaclaro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/verdeescuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 2 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-16d39bf1838c4656" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/feminina.png" alt="Camisa Gola V BL – Gestão">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/tamanhosfemininos.png" alt="Tamanhos Gola V BL – Gestão">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-16d39bf1838c4656"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-16d39bf1838c4656"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Camisa Gola V BL – Gestão</div>
+                    <div class="product-price">R$ 42,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulclaro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/cinzaclaro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/verdeescuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 3 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-b347d153f38e629b" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisaufmg/ufmgmasculina.png" alt="Camisa Gola Redonda – UFMG P">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/tamanhosmasculinos.png" alt="Tamanhos Gola Redonda – UFMG P">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-b347d153f38e629b"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-b347d153f38e629b"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Camisa Gola Redonda – UFMG P</div>
+                    <div class="product-price">R$ 42,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulclaro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/cinzaclaro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/verdeescuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 4 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-2560107fc2dccb41" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisaufmg/ufmgfeminina.png" alt="Camisa Gola V BL – UFMG P">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/tamanhosfemininos.png" alt="Tamanhos Gola V BL – UFMG P">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-2560107fc2dccb41"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-2560107fc2dccb41"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Camisa Gola V BL – UFMG P</div>
+                    <div class="product-price">R$ 42,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulclaro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/cinzaclaro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/verdeescuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 5 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-7cba2f5bc298a145" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisaufmg/ufmgmasculinalogo.png" alt="Camisa Gola Redonda – UFMG G">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/tamanhosmasculinos.png" alt="Tamanhos Gola Redonda – UFMG G">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-7cba2f5bc298a145"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-7cba2f5bc298a145"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Camisa Gola Redonda – UFMG G</div>
+                    <div class="product-price">R$ 42,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulclaro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/cinzaclaro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/verdeescuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 6 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-1b20fb625c482d64" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisaufmg/ufmgfemininalogo.png" alt="Camisa Gola V BL – UFMG G">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisagestao/tamanhosfemininos.png" alt="Tamanhos Gola V BL – UFMG G">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-1b20fb625c482d64"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-1b20fb625c482d64"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Camisa Gola V BL – UFMG G</div>
+                    <div class="product-price">R$ 42,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulclaro.png" alt="Azul Claro"></button>
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/cinzaclaro.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Verde Escuro"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/verdeescuro.png" alt="Verde Escuro"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisagestao/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 7 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-b4bef50a113f0958" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/masculina.png" alt="Polo – UFMG">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/tamanhosmasculinos.png" alt="Tamanhos Polo – UFMG">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-b4bef50a113f0958"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-b4bef50a113f0958"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Polo – UFMG</div>
+                    <div class="product-price">R$ 66,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/azul.png" alt="Azul"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 8 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-86b78c3800e6ffa2" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/feminina.png" alt="Polo BL – UFMG">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/tamanhosfemininos.png" alt="Tamanhos Polo BL – UFMG">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-86b78c3800e6ffa2"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-86b78c3800e6ffa2"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Polo BL – UFMG</div>
+                    <div class="product-price">R$ 66,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/azul.png" alt="Azul"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 9 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-8374ad91bc3d33d2" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/masculinalogo.png" alt="Polo – UFMG Estilizado">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/tamanhosmasculinos.png" alt="Tamanhos Polo – UFMG Estilizado">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-8374ad91bc3d33d2"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-8374ad91bc3d33d2"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Polo – UFMG Estilizado</div>
+                    <div class="product-price">R$ 66,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/azul.png" alt="Azul"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 10 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-607559c8b4f8164b" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/femininalogo.png" alt="Polo BL – UFMG Estilizado">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/camisapolo/tamanhosfemininos.png" alt="Tamanhos Polo BL – UFMG Estilizado">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-607559c8b4f8164b"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-607559c8b4f8164b"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Polo BL – UFMG Estilizado</div>
+                    <div class="product-price">R$ 66,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                        <button class="size-btn" data-size="XG">XG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/azul.png" alt="Azul"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Vinho"><img src="https://ufmgdagess.github.io/lojinha/camisapolo/vinho.png" alt="Vinho"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 11 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-678f1727107f59132" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/moletons/moletommasculino.png" alt="Moletom Canguru – UFMG">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/moletons/tamanhosmasculinos.png" alt="Tamanhos Moletom Canguru – UFMG">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-678f1727107f59132"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-678f1727107f59132"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Moletom Canguru – UFMG</div>
+                    <div class="product-price">R$ 139,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/moletons/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/moletons/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/moletons/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/moletons/cinzaclaro.png" alt="Cinza Claro"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/moletons/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/moletons/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Vermelho"><img src="https://ufmgdagess.github.io/lojinha/moletons/vermelho.png" alt="Vermelho"></button>
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 12 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-092220bc549f1118" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/moletons/moletomfeminino.png" alt="Moletom Canguru BL – UFMG">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/moletons/tamanhosfemininos.png" alt="Tamanhos Moletom Canguru BL – UFMG">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-092220bc549f1118"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-092220bc549f1118"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Moletom Canguru BL – UFMG</div>
+                    <div class="product-price">R$ 139,90</div>
+                    <div class="size-selector">
+
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+
+
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Azul Escuro"><img src="https://ufmgdagess.github.io/lojinha/moletons/azulescuro.png" alt="Azul Escuro"></button>
+                        <button class="color-btn" data-color="Branco"><img src="https://ufmgdagess.github.io/lojinha/moletons/branco.png" alt="Branco"></button>
+                        <button class="color-btn" data-color="Cinza"><img src="https://ufmgdagess.github.io/lojinha/moletons/cinza.png" alt="Cinza"></button>
+                        <button class="color-btn" data-color="Cinza Claro"><img src="https://ufmgdagess.github.io/lojinha/moletons/cinzaclaro.png" alt="Cinza Claro"></button>
+                        <button class="color-btn" data-color="Preto"><img src="https://ufmgdagess.github.io/lojinha/moletons/preto.png" alt="Preto"></button>
+                        <button class="color-btn" data-color="Rosa"><img src="https://ufmgdagess.github.io/lojinha/moletons/rosa.png" alt="Rosa"></button>
+                        <button class="color-btn" data-color="Vermelho"><img src="https://ufmgdagess.github.io/lojinha/moletons/vermelho.png" alt="Vermelho"></button>
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+<!-- Produto 13 com carrossel -->
+
+            <div class="product">
+                <!-- Início do carrossel -->
+                <div class="swiper-container swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-233d074fef741552" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" data-swiper-slide-index="0" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/jaquetacollege/jaquetacollegefeminina.png" alt="Jaqueta College">
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 3" data-swiper-slide-index="1" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/jaquetacollege/jaquetacollegemasculina.png" alt="Jaqueta College">
+                        </div>
+                        <div class="swiper-slide" role="group" aria-label="3 / 3" data-swiper-slide-index="2" style="width: 273px;">
+                            <img src="https://ufmgdagess.github.io/lojinha/jaquetacollege/tamanhosjaquetacollege.png" alt="Tamanhos Jaqueta College">
+                        </div>
+                        <!-- Adicione mais slides conforme necessário -->
+                    </div>
+                    <!-- Botões de navegação -->
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-233d074fef741552"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-233d074fef741552"></div>
+                    <!-- Paginação (opcional) -->
+                    <!-- <div class="swiper-pagination"></div> -->
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                <!-- Fim do carrossel -->
+                <div class="product-info">
+                    <div class="product-name">Jaqueta College</div>
+                    <div class="product-price">R$ 169,90</div>
+                    <div class="size-selector">
+                        <button class="size-btn" data-size="PP">PP</button>
+                        <button class="size-btn" data-size="P">P</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="GG">GG</button>
+                    </div>
+                    <div class="color-selector">
+                        <button class="color-btn" data-color="Preto e Cinza"><img src="https://ufmgdagess.github.io/lojinha/jaquetacollege/pretoecinza.png" alt="Preto e Cinza"></button>
+                        <button class="color-btn" data-color="Vermelho e Cinza"><img src="https://ufmgdagess.github.io/lojinha/jaquetacollege/vermelhoecinza.png" alt="Vermelho e Cinza"></button>
+
+                    </div>
+                    <div class="quantity">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+
+                <!-- Repita o mesmo para os demais produtos, garantindo que cada um tenha seu próprio carrossel com as imagens correspondentes -->
+
+            </div> <!-- Fim da div .products -->
+        </div> <!-- Fim da div .container -->
+
+        <!-- Área do Carrinho de Compras (permanece a mesma) -->
+        <div class="cart-area">
+        <img src="https://ufmgdagess.github.io/lojinha/logo.png" alt="Logo" style="width: 100px; margin-bottom: 10px;">
+        <h2>Carrinho de Encomendas</h2>
+        <button class="close-cart">Voltar</button>
+        <div class="cart-items"><div class="cart-item">
+                    <img src="https://ufmgdagess.github.io/lojinha/camisaufmg/ufmgmasculina.png" alt="Camisa Gola Redonda – UFMG P">
+                    <div class="cart-item-content">
+                        <div>Camisa Gola Redonda – UFMG P - Tamanho: G - Cor: Rosa</div>
+                        <div>Quantidade: 2 - R$ 85.80</div>
+                    </div>
+                    <button class="remove-item" data-index="0">Remover</button>
+                </div><div class="cart-item">
+                    <img src="https://ufmgdagess.github.io/lojinha/camisaufmg/ufmgmasculinalogo.png" alt="Camisa Gola Redonda – UFMG G">
+                    <div class="cart-item-content">
+                        <div>Camisa Gola Redonda – UFMG G - Tamanho: GG - Cor: Rosa</div>
+                        <div>Quantidade: 2 - R$ 85.80</div>
+                    </div>
+                    <button class="remove-item" data-index="1">Remover</button>
+                </div></div>
+        <div class="cart-total">Total: R$ 171.60</div>
+        <input type="text" id="user-name" placeholder="Nome" required="">
+        <input type="email" id="user-email" placeholder="E-mail" required="">
+        <input type="tel" id="user-whatsapp" placeholder="WhatsApp" required="">
+        <button class="generate-pdf" disabled="">Gerar PDF</button>
+        <a href="https://api.whatsapp.com/send?phone=553192990360" target="_blank" class="whatsapp-button">WhatsApp</a>
+        </div>
+
+        <!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa todos os carrosséis
+        const swipers = [];
+        document.querySelectorAll('.swiper-container').forEach(function(container, index) {
+            swipers[index] = new Swiper(container, {
+                loop: true,
+                navigation: {
+                    nextEl: container.querySelector('.swiper-button-next'),
+                    prevEl: container.querySelector('.swiper-button-prev'),
+                },
+            });
+        });
+
+        // Carrinho de compras
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCounter() {
+            const counter = document.querySelector('.cart-counter');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            counter.textContent = totalItems;
+            counter.style.display = totalItems > 0 ? 'block' : 'none';
+        }
+
+        function updateCart(product, size, color, quantity, price, image) {
+            let existingItem = cart.find(item => item.product === product && item.size === size && item.color === color);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ product, size, color, quantity, price, image });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCounter();
+            displayCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCounter();
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartItems = document.querySelector('.cart-items');
+            const cartTotal = document.querySelector('.cart-total');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.product}">
+                    <div class="cart-item-content">
+                        <div>${item.product} - Tamanho: ${item.size} - Cor: ${item.color}</div>
+                        <div>Quantidade: ${item.quantity} - R$ ${itemTotal.toFixed(2)}</div>
+                    </div>
+                    <button class="remove-item" data-index="${index}">Remover</button>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+            
+            // Adiciona evento de remoção aos botões
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeFromCart(index);
+                });
+            });
+        }
+
+function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+    
+            const marginLeft = 15; // Margem esquerda
+            const marginright = 15; // Margem direita
+            const marginTop = 20;  // Margem superior
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const usableWidth = pageWidth - marginLeft * 2;
+            
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const whatsapp = document.getElementById('user-whatsapp').value;
+
+            // Logotipo
+            const logoWidth = 20;
+            const logoHeight = 20;
+            doc.addImage('https://ufmgdagess.github.io/lojinha/logo.png', 'PNG', 10, 10, logoWidth, logoHeight);
+
+            doc.setFontSize(18);
+            doc.text('Encomenda para a Loja DAGESS', 10, 40);
+
+            doc.setFontSize(12);
+            doc.text(`Nome: ${name}`, 10, 50);
+            doc.text(`E-mail: ${email}`, 10, 60);
+            doc.text(`WhatsApp: ${whatsapp}`, 10, 70);
+
+            let yPosition = 90;
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                doc.addImage(item.image, 'JPEG', 10, yPosition, 20, 20);
+                const itemText = `${index + 1}. ${item.product} - Tamanho: ${item.size} - Cor: ${item.color} - Quantidade: ${item.quantity}`;
+                doc.text(itemText, 35, yPosition + 10);
+
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                doc.text(`Preço: R$ ${itemTotal.toFixed(2)}`, 35, yPosition + 20);
+
+                yPosition += 30;
+            });
+
+            doc.setFontSize(14);
+            doc.text(`Total: R$ ${total.toFixed(2)}`, 10, yPosition + 10);
+            doc.save('pedido_diretorio_academico.pdf');
+        }
+
+        // Eventos
+        document.querySelector('.generate-pdf').addEventListener('click', generatePDF);
+
+        // Verifica campos do formulário
+        function checkFields() {
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const whatsapp = document.getElementById('user-whatsapp').value;
+            const generatePdfButton = document.querySelector('.generate-pdf');
+            
+            generatePdfButton.disabled = !(name && email && whatsapp);
+        }
+
+        // Adiciona eventos de input nos campos do formulário
+        document.getElementById('user-name').addEventListener('input', checkFields);
+        document.getElementById('user-email').addEventListener('input', checkFields);
+        document.getElementById('user-whatsapp').addEventListener('input', checkFields);
+
+        // Manipulação da quantidade
+        document.querySelectorAll('.quantity button').forEach(button => {
+            button.addEventListener('click', function() {
+                let input = this.parentNode.querySelector('input');
+                let value = parseInt(input.value);
+                if (this.classList.contains('decrease') && value > 1) {
+                    input.value = value - 1;
+                } else {
+                    input.value = value + 1;
+                }
+            });
+        });
+
+        // Adiciona produtos ao carrinho
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                let productInfo = this.closest('.product-info');
+                let product = productInfo.querySelector('.product-name').textContent;
+                let size = productInfo.querySelector('.size-btn.selected').dataset.size;
+                let color = productInfo.querySelector('.color-btn.selected').dataset.color;
+                let quantity = parseInt(productInfo.querySelector('input').value);
+                let price = parseFloat(productInfo.querySelector('.product-price').textContent.replace('R$ ', '').replace(',', '.'));
+                let image = this.closest('.product').querySelector('img').src;
+                updateCart(product, size, color, quantity, price, image);
+            });
+        });
+
+        document.querySelector('.cart-icon').addEventListener('click', function() {
+            document.querySelector('.cart-area').classList.toggle('open');
+        });
+
+        document.querySelector('.close-cart').addEventListener('click', function() {
+            document.querySelector('.cart-area').classList.remove('open');
+        });
+
+        // Seleciona tamanho e cor
+        document.querySelectorAll('.size-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.closest('.size-selector');
+                parent.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        document.querySelectorAll('.color-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.closest('.color-selector');
+                parent.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        updateCartCounter();
+        displayCart();
+    });
+
+</script>
+</body></html>
