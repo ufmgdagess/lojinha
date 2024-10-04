@@ -74,7 +74,7 @@
     }
     .cart-area h2 {
         text-align: center;
-        font-size: 1.2em;
+        font-size: 1em;
         margin-bottom: 15px;
     }
 
@@ -138,7 +138,7 @@
     }
     
     .product-name {
-        font-size: 1em;
+        font-size: 15px;
         font-weight: bold;
         margin-bottom: 10px;
         text-align: center;
@@ -148,6 +148,7 @@
         font-size: 1.1em;
         color: var(--accent-color);
         margin-bottom: 15px;
+        text-align: center; /* Adicionado para centralizar o preço */
     }
 
     /* Ajuste na seção de tamanhos */
@@ -156,6 +157,7 @@
         flex-wrap: nowrap;
         gap: 3px;
         overflow-x: auto;
+        justify-content: center;
     }
 
     .size-btn {
@@ -165,6 +167,8 @@
         cursor: pointer;
         white-space: nowrap;
         margin: 0 2px;
+        flex-grow: 0; /* Adicionado para evitar redimensionamento */
+        flex-shrink: 0; /* Adicionado para evitar redimensionamento */
     }
 
     .size-btn.selected {
@@ -176,7 +180,7 @@
         margin-top: 10px;
         margin-bottom: 15px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .color-btn {
@@ -187,6 +191,7 @@
         cursor: pointer;
         border-radius: 50%;
         overflow: hidden;
+        margin: 0 2px;
     }
 
     .color-btn img {
@@ -202,6 +207,7 @@
     .quantity {
         display: flex;
         align-items: center;
+        justify-content: center; /* Adicionado para centralizar a quantidade */
         margin-bottom: 15px;
     }
     
@@ -254,7 +260,7 @@
         color: white;
         border-radius: 50%;
         padding: 2px 6px;
-        font-size: 12px;
+        font-size: 10px;
     }
     
     .icon-container {
@@ -277,7 +283,7 @@
         display: none; /* Inicialmente oculto */
         overflow-y: auto; /* Permite rolagem se necessário */
         padding: 20px;
-        font-size: 12px; /* Ajuste o valor conforme o tamanho que deseja */
+        font-size: 10px; /* Ajuste o valor conforme o tamanho que deseja */
     }
 
     .cart-area.open {
