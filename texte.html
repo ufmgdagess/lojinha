@@ -1213,7 +1213,7 @@ function generatePDF() {
                 total += itemTotal;
                 doc.text(`Preço unitário: R$ ${item.price.toFixed(2)}`, 35, textYPosition);
                 yPosition += 10;
-                doc.text(`Preço total do item: R$ ${itemTotal.toFixed(2)}`, 35, yPosition);
+                doc.text(`Preço total do item: R$ ${itemTotal.toFixed(2)}`, 35, textyPosition);
                 yPosition += 20; // ajuste a posição do próximo item
             });
 
