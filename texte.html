@@ -1203,12 +1203,12 @@ function generatePDF() {
                 doc.addImage(item.image, 'JPEG', 10, yPosition, 20, 20);
                 const itemText = `${index + 1}. ${item.product} - Tamanho: ${item.size} - Cor: ${item.color} - Quantidade: ${item.quantity}`;
                 const textLines = doc.splitTextToSize(itemText, usableWidth - 35); // 35 é a largura da imagem
-                let textYPosition = yPosition + 10;
+                let textYPosition = yPosition + 5;
                 textLines.forEach(line => {
                     doc.text(line, 35, textYPosition);
                     textYPosition += 10; // ajuste a altura da linha de texto
                 });
-                yPosition = textYPosition + 5; // ajuste a posição do texto do preço do item
+                yPosition = textYPosition +10; // ajuste a posição do texto do preço do item
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
                 doc.text(`Preço unitário: R$ ${item.price.toFixed(2)}`, 35, yPosition);
