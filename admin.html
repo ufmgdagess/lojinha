@@ -64,15 +64,42 @@
             iframe.open();
             iframe.write(data);
             iframe.close();
+
+            // Garantir que os elementos dentro do iframe sejam clicáveis para edição
+            addEditableFeatures(iframe);
         })
         .catch(error => alert('Erro ao carregar index.html: ' + error));
     }
 
-    // Habilitar modo de edição dentro do iframe
-    function enableEditMode() {
-        const iframe = document.getElementById('iframePreview').contentWindow.document;
+    // Adicionar recursos de edição aos elementos (como imagens, links, textos)
+    function addEditableFeatures(iframe) {
+        // Tornar todo o conteúdo editável
         iframe.body.contentEditable = true;
-        alert('Modo de edição ativado! Agora você pode clicar e editar o conteúdo.');
+
+        // Tornar imagens editáveis (alterar src)
+        let images = iframe.querySelectorAll('img');
+        images.forEach(img => {
+            img.onclick = function() {
+                let newSrc = prompt("Alterar URL da imagem:", img.src);
+                if (newSrc) {
+                    img.src = newSrc;
+                }
+            };
+        });
+
+        // Tornar links editáveis (alterar href)
+        let links = iframe.querySelectorAll('a');
+        links.forEach(link => {
+            link.onclick = function(e) {
+                e.preventDefault(); // Prevenir redirecionamento ao clicar no link
+                let newHref = prompt("Alterar URL do link:", link.href);
+                if (newHref) {
+                    link.href = newHref;
+                }
+            };
+        });
+
+        alert('Modo de edição ativado! Você pode clicar em imagens para alterar o URL e clicar em links para editar os links.');
     }
 
     // Salvar as alterações feitas na página
