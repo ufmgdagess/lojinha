@@ -1208,7 +1208,7 @@ function generatePDF() {
                     doc.text(line, 35, textYPosition);
                     textYPosition += 10; // ajuste a altura da linha de texto
                 });
-                yPosition = textYPosition + 10; // ajuste a posição do texto do preço do item
+                yPosition = textYPosition + 5; // ajuste a posição do texto do preço do item
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
                 doc.text(`Preço unitário: R$ ${item.price.toFixed(2)}`, 35, yPosition);
