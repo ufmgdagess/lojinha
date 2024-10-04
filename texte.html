@@ -1212,9 +1212,9 @@ function generatePDF() {
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
                 doc.text(`Preço unitário: R$ ${item.price.toFixed(2)}`, 35, textYPosition);
-                yPosition += 10;
-                doc.text(`Preço total do item: R$ ${itemTotal.toFixed(2)}`, 35, textyPosition);
-                yPosition += 20; // ajuste a posição do próximo item
+                yPosition += 5;
+                doc.text(`Preço total do item: R$ ${itemTotal.toFixed(2)}`, 35, yPosition);
+                yPosition += 5; // ajuste a posição do próximo item
             });
 
             doc.setFontSize(16);
